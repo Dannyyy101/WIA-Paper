@@ -40,6 +40,8 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 # ---------------------------------------------------------
 # Install c2rust
 # ---------------------------------------------------------
-RUN cargo install c2rust kani-verifier
+RUN cargo install c2rust
 
 WORKDIR /src
+
+# run-command docker run -it --rm -v "$PWD":/src c2rust-linux bash
