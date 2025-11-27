@@ -167,19 +167,7 @@ pub unsafe extern "C" fn common_sorted_list(
     *size = unique(array, len);
     return array;
 }
-#[no_mangle]
-pub unsafe extern "C" fn print(mut array: *const core::ffi::c_int, mut len: size_t) {
-    printf(b"[\0" as *const u8 as *const core::ffi::c_char);
-    let mut i: size_t = 0 as size_t;
-    while i < len {
-        if i > 0 as size_t {
-            printf(b", \0" as *const u8 as *const core::ffi::c_char);
-        }
-        printf(
-            b"%d\0" as *const u8 as *const core::ffi::c_char,
-            *array.offset(i as isize),
-        );
-        i = i.wrapping_add(1);
-    }
-    printf(b"]\n\0" as *const u8 as *const core::ffi::c_char);
+
+pub fn print(array: &[i32]) {
+    println!("{:?}", array);
 }
